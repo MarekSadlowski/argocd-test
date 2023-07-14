@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-app-devops-tools
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MarekSadlowski/argocd-test.git
+    targetRevision: HEAD
+    path: devops-tools
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops-tools
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
