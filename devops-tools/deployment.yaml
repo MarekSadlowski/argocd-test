@@ -1,8 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jenkins
+  name: jenkins-dep
   namespace: devops-tools
+  labels:
+    app: jenkins-server
 spec:
   replicas: 1
   selector:
@@ -16,13 +18,6 @@ spec:
       containers:
         - name: jenkins
           image: jenkins/jenkins:2.414-jdk11
-          resources:
-            limits:
-              memory: "250Mi"
-              cpu: "500m"
-            requests:
-              memory: "250Mi"
-              cpu: "250m"
           ports:
             - name: httpport
               containerPort: 8080
