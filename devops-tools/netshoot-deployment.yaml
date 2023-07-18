@@ -23,4 +23,4 @@ spec:
         - name: netshoot
           image: nicolaka/netshoot
           command: ["/bin/bash"]
-          args: ["-c", "while true; do curl -s -o /dev/null -I -w \"%{http_code}\n\" jenkins-svc; sleep 60;done"]
+          args: ["-c", "while true; do curl -s -o /dev/null -I -w \"%{http_code}\n\" jenkins-svc; sleep 3;done"]
